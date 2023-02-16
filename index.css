@@ -23,5 +23,9 @@ body{
 
 .search-btn{
     margin-top: 40px;
-    
+
+}
+
+.display-none{
+    display: none;
 }
