@@ -6,11 +6,23 @@ const options = {
 	}
 };
 
-window.onload=async function(){
-    async function fetchMembers(url) {
-        const response = await fetch(url,options);
-        var data = await response.json();
-        console.log(data);
-    }
-    fetchMembers('https://imdb8.p.rapidapi.com/auto-complete?q=Harry%20Potter');
+window.onload = async function () {
+	async function fetchMembers(url) {
+		const response = await fetch(url, options);
+		var data = await response.json();
+		ProcessData(data.d);
+	}
+	fetchMembers('https://imdb8.p.rapidapi.com/auto-complete?q=ohmygod');
 };
+
+
+function ProcessData(info) {
+	console.log(info);
+	for (let i = 0; i < info.length; i++) {
+		// console.log(info[i]);
+		if (info[i].i) {
+			var imgUrl = info[i].i.imageUrl;
+			console.log(imgUrl)
+		}
+	}
+}

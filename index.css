@@ -1,0 +1,27 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+body{
+    background-color: black;
+}
+.navbar-brand,
+.nav-link,
+.nav-item,
+.btn-outline-success{
+    color: white;
+}
+
+#movie-serach-box{
+    width: 90%;
+    height: 100px;
+    background: transparent;
+    margin-top: 20vh;
+    font-size: 70px;
+    color: grey;
+}
+
+.search-btn{
+    margin-top: 40px;
+    
+}
