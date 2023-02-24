@@ -23,61 +23,62 @@ window.onload = async function () {
 		// localStorage.setItem('MovieImages',data.json());
 		spinner.classList.add('display-none');
 		movieSearchButton.classList.remove('display-none');
-		// console.log(data.d)
+		console.log(data.d)
 		// localStorage.setItem('Images',data.d);
 		ProcessData(data.d);
+		window.location.href="description.html";
 		// const y=localStorage.getItem('MovieImages');
 		return data;
 	}
 	if (movieSearchButton) {
 		movieSearchButton.addEventListener('click', async function () {
 			if (movieSearchBox && movieSearchBox.textContent) {
-				fetchMembers(`https://imdb8.p.rapidapi.com/auto-complete?q=${movieSearchBox.value}`);
+				fetchMembers(`https://imdb8.p.rapidapi.com/auto-complete?q=${movieSearchBox.textContent}`);
 			}
 		})
 	}
-	var counter = 5;
-	movieSearchBox.addEventListener('keyup', async function (e) {
-		console.log(e.keyCode);
-		if (e.keyCode == 8) {
-			if (movieString) {
-				movieString = movieString.substring(0, movieString.length - 1);
-				return;
-			}
-		}
-		if (e.keyCode == 20)
-			return;
-		if (movieString.length > 4) {
-			console.log(movieSearchBox.textContent);
-			const z = (await fetchMembers(`https://imdb8.p.rapidapi.com/title/find?q=${movieSearchBox.textContent}`));
-			console.log(z);
+	// var counter = 5;
+	// movieSearchBox.addEventListener('keyup', async function (e) {
+	// 	console.log(e.keyCode);
+	// 	if (e.keyCode == 8) {
+	// 		if (movieString) {
+	// 			movieString = movieString.substring(0, movieString.length - 1);
+	// 			return;
+	// 		}
+	// 	}
+	// 	if (e.keyCode == 20)
+	// 		return;
+	// 	if (movieString.length > 4) {
+	// 		console.log(movieSearchBox.textContent);
+	// 		const z = (await fetchMembers(`https://imdb8.p.rapidapi.com/title/find?q=${movieSearchBox.textContent}`));
+	// 		console.log(z);
 
-			for (i = 0; i < z.results.length; i++) {
-				console.log(z.results[i].title);
-				if (z.results[i].title) {
-					if (counter > 0) {
-						var k = document.createElement('div');
-						k.textContent = z.results[i].title;
-						k.style.color = "white";
-						k.style.fontSize = "20px";
-						k.style.position = "relative";
-						k.style.zIndex = "1000";
-						k.contentEditable = "false";
-						movieSearchBox.append(k);
-						counter--;
-						movieSearchButton.style.display = "none";
-					}
-				}
-			}
-		} else if (movieString.length<=4) {
-			movieString+=e.key;
-			console.log(movieString);
-		}
-		else {
-			return;
-		}
+	// 		for (i = 0; i < z.results.length; i++) {
+	// 			console.log(z.results[i].title);
+	// 			if (z.results[i].title) {
+	// 				if (counter > 0) {
+	// 					var k = document.createElement('div');
+	// 					k.textContent = z.results[i].title;
+	// 					k.style.color = "white";
+	// 					k.style.fontSize = "20px";
+	// 					k.style.position = "relative";
+	// 					k.style.zIndex = "1000";
+	// 					k.contentEditable = "false";
+	// 					movieSearchBox.append(k);
+	// 					counter--;
+	// 					movieSearchButton.style.display = "none";
+	// 				}
+	// 			}
+	// 		}
+	// 	} else if (movieString.length<=4) {
+	// 		movieString+=e.key;
+	// 		console.log(movieString);
+	// 	}
+	// 	else {
+	// 		return;
+	// 	}
 
-	})
+	// })
 
 };
 
